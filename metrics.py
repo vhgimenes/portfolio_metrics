@@ -1,6 +1,7 @@
 """
-Módulo contendo funções de report de métricas de performance e risco.
+Módulo contendo as funções métricas de performance e risco.
 """
+
 # Importando bibliotecas
 import contextlib
 import pandas as pd
