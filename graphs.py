@@ -1,11 +1,5 @@
 """
-Módulo contendo funções d eo
-- Quick start:
-https://matplotlib.org/stable/tutorials/introductory/quick_start.html
-
- - Colors Tutorial:
-https://matplotlib.org/stable/tutorials/colors/colors.html
-
+Módulo contendo funções gráficas do pacote.
 """
 
 import contextlib
