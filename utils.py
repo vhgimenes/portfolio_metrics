@@ -1,6 +1,7 @@
 """
 Módulo contendo funções auxiliares para os outros módulos do pacote.
 """
+
 # Importando as bibliotecas
 import pandas as pd
 import datetime as dt 
@@ -337,62 +338,6 @@ def avg_loss(returns:pd.Series, aggregate:str=None, compounded:bool=True)->float
     if aggregate:
         returns = aggregate_returns(returns, aggregate, compounded)
     return returns[returns < 0].dropna().mean()
-
-# def indicadores(return_strategy, strategy_performance, return_benchmark, index_performance):
-#     """
-#     funcao que printa os indicadores de underwater, cagr, sharpe, volatilidade anualizada e VaR
-    
-#     params: TODOS são pandas Series
-#         return_strategy: serie que apresenta os retornos de cada time frame da estrategia
-#         strategy_performance: serie que apresenta a cota comecando em 1 da estrategia
-#         return_benchmark: serie que apresenta os retornos de cada time frame do índice
-#         index_performance: serie que apresenta a cota comecando em 1 do indice
-
-#     returns: no returns
-#     """
-#     #Calculamos underwater, maximum drawdown, cagr, volatilidade e sharpe para a estratégia: 
-#     volatility_anualized = return_strategy.std()*252**0.5
-#     underwater = strategy_performance.div(strategy_performance.cummax())-1
-#     maximum_drawdown = min(underwater)
-#     cagr = strategy_performance.iloc[-1]**(252/len(strategy_performance))-1
-#     sharpe = (252**0.5)*return_strategy.mean()/return_strategy.std()
-#     sortino = (252**0.5)*return_strategy.mean()/return_strategy[return_strategy<0].std()
-
-#     #Calculamos underwater, maximum drawdown, cagr, volatilidade e sharpe para o índice: 
-#     volatility_anualized_index = return_benchmark.std()*252**0.5
-#     underwater_index =index_performance.div(index_performance.cummax())-1
-#     maximum_drawdown_index = min(underwater_index)
-#     cagr_index = index_performance.iloc[-1]**(252/len(index_performance))-1
-#     sharpe_index = (252**0.5)*return_benchmark.mean()/return_benchmark.std()
-#     sortino_index = (252**0.5)*return_benchmark.mean()/return_benchmark[return_benchmark<0].std()
-
-#     #Criamos esta função para printar os indicadores de maneira mais organizada:
-#     print('Strategy:' + '\n' + 'vol: ' + 
-#         str(volatility_anualized) + '\nmax drawdown: ' + 
-#         str(maximum_drawdown) + '\nCAGR: ' + str(cagr) + 
-#         '\nsharpe: ' + str(sharpe) +
-#         '\nsortino: '+str(sortino))
-#     print('\nIndex:' + '\n' + 'vol: ' + 
-#         str(volatility_anualized_index) + '\nmax drawdown: ' + 
-#         str(maximum_drawdown_index) + '\nCAGR: ' + str(cagr_index) + 
-#         '\nsharpe: ' + str(sharpe_index)+
-#           '\nsortino: '+str(sortino_index))
-    
-#     #Calcula-se o VAR para a estratégia a partir do método de variância/covariância: 
-#     VaR_90 = 1 - 1*(norm.ppf(1-0.90,return_strategy.mean(), return_strategy.std()) + 1) 
-#     VaR_95 = 1 - 1*(norm.ppf(1-0.95,return_strategy.mean(), return_strategy.std()) + 1) 
-#     VaR_99 = 1 - 1*(norm.ppf(1-0.99,return_strategy.mean(), return_strategy.std()) + 1)  
-#     var_dict = {'90%': VaR_90, '95%': VaR_95, '99%': VaR_99} 
-#     VaR_strategy = pd.DataFrame.from_dict(var_dict, orient='index', columns = ['Value at Risk - Strategy'])
-#     display(VaR_strategy)
-
-#     #Calcula-se o VAR para o índice a partir do método de variância/covariância: 
-#     VaR_90_index = 1 - 1*(norm.ppf(1-0.90,return_benchmark.mean(), return_benchmark.std()) + 1) 
-#     VaR_95_index = 1 - 1*(norm.ppf(1-0.95,return_benchmark.mean(), return_benchmark.std()) + 1) 
-#     VaR_99_index = 1 - 1*(norm.ppf(1-0.99,return_benchmark.mean(), return_benchmark.std()) + 1)  
-#     var_dict_index = {'90%': VaR_90_index, '95%': VaR_95_index, '99%': VaR_99_index} 
-#     VaR_index = pd.DataFrame.from_dict(var_dict_index, orient='index', columns = ['Value at Risk - Index'])
-#     display(VaR_index)
 
 
     
