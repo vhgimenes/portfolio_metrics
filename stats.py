@@ -1,6 +1,7 @@
 """
-Módulo contendo funções de indicadores de performance e risco.
+Módulo contendo funções estatísticas para mensuração da performance e risco das séries.
 """
+
 # Importando bibliotecas
 import pandas as pd
 import numpy as np
